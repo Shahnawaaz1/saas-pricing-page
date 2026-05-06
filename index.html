@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaaS Pricing</title>
+
+<style>
+:root {
+  --bg: #ffffff;
+  --text: #111;
+  --card: #f9fafb;
+  --primary: #4f46e5;
+}
+
+body.dark {
+  --bg: #0f172a;
+  --text: #fff;
+  --card: #1e293b;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: 36px;
+}
+
+/* TOGGLE */
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.toggle-switch {
+  width: 60px;
+  height: 30px;
+  background: #ddd;
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.switch {
+  width: 25px;
+  height: 25px;
+  background: var(--primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: 0.3s;
+}
+
+.active .switch {
+  transform: translateX(30px);
+}
+
+/* DARK BUTTON */
+.dark-btn {
+  margin-left: 10px;
+}
+
+/* PRICING */
+.pricing {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.card {
+  background: var(--card);
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.recommended {
+  border: 2px solid var(--primary);
+}
+
+/* BADGE */
+.badge {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  background: var(--primary);
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+/* PRICE */
+.price {
+  font-size: 32px;
+  margin: 10px 0;
+}
+
+/* BUTTON */
+.btn {
+  margin-top: 15px;
+  padding: 10px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  margin-top: 40px;
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+/* FAQ */
+.faq {
+  margin-top: 40px;
+}
+
+.faq-item {
+  margin-bottom: 10px;
+}
+
+.faq-question {
+  background: var(--card);
+  padding: 12px;
+  cursor: pointer;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.3s;
+  padding: 0 12px;
+}
+
+/* RESPONSIVE */
+@media(min-width: 768px) {
+  .pricing {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Simple Pricing</h1>
+  <p>Choose the best plan for your SaaS</p>
+
+  <div class="toggle-container">
+    <span>Monthly</span>
+    <div class="toggle-switch" onclick="togglePrice()">
+      <div class="switch"></div>
+    </div>
+    <span>Yearly (Save 20%)</span>
+
+    <button class="btn dark-btn" onclick="toggleDark()">🌙</button>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+
+  <div class="card">
+    <h3>Basic</h3>
+    <p class="price" data-month="10" data-year="100">$10</p>
+    <p>Good for beginners</p>
+    <button class="btn">Start Free Trial</button>
+  </div>
+
+  <div class="card recommended">
+    <span class="badge">Most Popular</span>
+    <h3>Pro</h3>
+    <p class="price" data-month="20" data-year="200">$20</p>
+    <p>Best for professionals</p>
+    <button class="btn">Start Free Trial</button>
+  </div>
+
+  <div class="card">
+    <h3>Enterprise</h3>
+    <p class="price" data-month="50" data-year="500">$50</p>
+    <p>For large teams</p>
+    <button class="btn">Start Free Trial</button>
+  </div>
+
+</section>
+
+<!-- FEATURES -->
+<section>
+  <h2 style="text-align:center;">Features</h2>
+
+  <table>
+    <tr>
+      <th>Feature</th>
+      <th>Basic</th>
+      <th>Pro</th>
+      <th>Enterprise</th>
+    </tr>
+    <tr>
+      <td>Users</td>
+      <td>1</td>
+      <td>5</td>
+      <td>Unlimited</td>
+    </tr>
+    <tr>
+      <td>Support</td>
+      <td>Email</td>
+      <td>Priority</td>
+      <td>24/7</td>
+    </tr>
+  </table>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <h2 style="text-align:center;">FAQ</h2>
+
+  <div class="faq-item">
+    <div class="faq-question">What is SaaS?</div>
+    <div class="faq-answer">Software as a Service (cloud-based apps).</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Can I cancel anytime?</div>
+    <div class="faq-answer">Yes, you can cancel anytime.</div>
+  </div>
+
+</section>
+
+</div>
+
+<script>
+let yearly = false;
+
+function togglePrice() {
+  yearly = !yearly;
+
+  document.querySelector(".toggle-switch").classList.toggle("active");
+
+  document.querySelectorAll(".price").forEach(el => {
+    let value = yearly ? el.dataset.year : el.dataset.month;
+    el.innerText = "$" + value;
+  });
+}
+
+// DARK MODE WITH SAVE
+function toggleDark() {
+  document.body.classList.toggle("dark");
+
+  localStorage.setItem("theme",
+    document.body.classList.contains("dark") ? "dark" : "light"
+  );
+}
+
+// LOAD SAVED THEME
+window.onload = () => {
+  if(localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+  }
+};
+
+// FAQ ANIMATION
+document.querySelectorAll(".faq-question").forEach(q => {
+  q.addEventListener("click", () => {
+    let ans = q.nextElementSibling;
+
+    if (ans.style.maxHeight) {
+      ans.style.maxHeight = null;
+    } else {
+      ans.style.maxHeight = ans.scrollHeight + "px";
+    }
+  });
+});
+</script>
+
+</body>
+</html>
